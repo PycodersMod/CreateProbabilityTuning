@@ -1,0 +1,18 @@
+{
+  "recipes": {
+    "create:precision_mechanism": {
+      "enabled": true,
+      "initial": 0.05,
+      "mode": "continuous",
+      "change": "0.01 * n",
+      "max_n": 0
+    },
+    "minecraft:iron_ingot": {
+      "enabled": true,
+      "initial": 0.1,
+      "mode": "discrete",
+      "change": [0.02, 0.03, 0.05],
+      "max_n": 5
+    }
+  }
+}
