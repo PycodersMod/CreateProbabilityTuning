@@ -12,7 +12,7 @@ import org.slf4j.Logger;
 
 import java.util.Optional;
 
-/** Stores the exact sequence starting stack instead of guessing the first tag item. */
+/** 保存确切的序列起始物品堆，避免猜测标签中的第一个物品。 */
 public final class SequenceOriginData {
     private static final Logger LOGGER = LogUtils.getLogger();
     private static final String NAMESPACE = "CreateProbabilityTuning";

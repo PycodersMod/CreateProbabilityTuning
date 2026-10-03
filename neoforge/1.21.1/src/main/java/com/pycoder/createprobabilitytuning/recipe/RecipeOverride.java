@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
-/** Create-specific boundary; the probability and NBT modules remain independent. */
+/** Create 专用适配边界；概率模块与 NBT 模块保持相互独立。 */
 public final class RecipeOverride {
     public ProcessingDecision evaluate(RecipeContext context, ItemStack input, RandomSource random) {
         if (!context.rule().enabled() || !(context.recipe() instanceof ProcessingRecipe<?, ?> processingRecipe)) {
@@ -78,8 +78,7 @@ public final class RecipeOverride {
     }
 
     /**
-     * Create's sequenced result pool is an exclusive weighted pool, unlike the
-     * independent main/extra outputs used by ordinary processing recipes.
+     * Create 的序列配方结果池是互斥加权池，与普通加工配方中彼此独立的主要/额外输出不同。
      */
     public ProcessingDecision evaluateSequenced(ResourceLocation recipeId, RecipeRule rule,
                                                  List<ProcessingOutput> resultPool, ItemStack input,

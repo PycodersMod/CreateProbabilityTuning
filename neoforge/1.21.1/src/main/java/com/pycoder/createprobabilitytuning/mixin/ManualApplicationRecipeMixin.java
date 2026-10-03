@@ -24,12 +24,10 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import java.util.List;
 
 /**
- * Covers Create's player right-click item-application path.
+ * 覆盖 Create 中玩家右键应用物品的路径。
  *
- * Create performs this path in two phases: transformBlock places the main
- * block, then rollResults drops extra outputs.  The decision is made at the
- * first phase and consumed at the second phase so a failed operation cannot
- * leave the transformed block behind or roll probability twice.
+ * Create 将此路径分为两个阶段：transformBlock 放置主要方块，随后 rollResults 掉落额外输出。
+ * 在第一阶段作出判定，并在第二阶段使用该结果，避免失败操作留下变换后的方块或重复抽取概率。
  */
 @Mixin(ManualApplicationRecipe.class)
 public abstract class ManualApplicationRecipeMixin {
@@ -115,8 +113,7 @@ public abstract class ManualApplicationRecipeMixin {
         if (invocation.decision().status() == ProcessingDecision.Status.SUCCESS
                 && !invocation.decision().outputs().isEmpty()
                 && invocation.decision().outputs().getFirst().getItem() instanceof BlockItem) {
-            // The selected block was already placed by transformBlock; do not
-            // also drop it as an item.
+            // 已选中的方块已由 transformBlock 放置，不要再将其作为物品掉落。
             return List.of();
         }
         return CreateOutputBridge.resolve(

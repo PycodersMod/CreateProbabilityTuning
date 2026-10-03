@@ -32,9 +32,8 @@ public final class RecipeScanner {
                     holder -> {
                         RecipeContext context = new RecipeContext(id, holder.value(), rule);
                         index.put(id, context);
-                        // Create derives deployer recipes from manual application
-                        // recipes. Keep the configured manual recipe id as the
-                        // history key while indexing the derived recipe object.
+                        // Create 会从手动应用配方派生出部署器配方。
+                        // 索引派生配方对象时，仍使用已配置的手动配方 ID 作为历史记录键。
                           if (holder.value() instanceof ManualApplicationRecipe) {
                               ResourceLocation deployerId = id.withSuffix("_using_deployer");
                               recipeManager.byKey(deployerId).ifPresent(deployer ->

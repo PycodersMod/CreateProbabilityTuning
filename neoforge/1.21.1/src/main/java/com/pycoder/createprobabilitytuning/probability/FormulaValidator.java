@@ -13,7 +13,7 @@ public final class FormulaValidator {
         return validate(formula, 0);
     }
 
-    /** Validates only the reachable range when a recipe has a finite max_n. */
+    /** 配方具有有限的 max_n 时，只验证实际可达的范围。 */
     public Result validate(String formula, int maxN) {
         List<ConfigDiagnostic> diagnostics = new ArrayList<>();
         final FormulaExpression expression;

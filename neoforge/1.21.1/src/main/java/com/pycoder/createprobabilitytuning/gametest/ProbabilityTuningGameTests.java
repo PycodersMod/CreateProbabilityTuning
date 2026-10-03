@@ -202,8 +202,8 @@ public final class ProbabilityTuningGameTests {
     @GameTest(template = "gametest/processing/brass_mixing", templateNamespace = CreateProbabilityTuning.MOD_ID,
             timeoutTicks = 160)
     public static void sequencedAssemblyEvaluatesFinalStepOnce(GameTestHelper helper) {
-        // CreateHook is a process-wide adapter; run this stateful integration
-        // test after the other tests that replace its test index have finished.
+        // CreateHook 是进程级适配器；此集成测试会修改状态，
+        // 因此应在其他会替换其测试索引的用例完成后运行。
         helper.runAtTickTime(40, () -> {
             var parentId = net.minecraft.resources.ResourceLocation.parse("create:sequenced_assembly/precision_mechanism");
             var parent = helper.getLevel().getRecipeManager().byKey(parentId)

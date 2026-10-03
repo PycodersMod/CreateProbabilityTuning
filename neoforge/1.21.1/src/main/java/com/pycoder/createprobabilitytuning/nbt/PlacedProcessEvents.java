@@ -10,7 +10,7 @@ import net.neoforged.neoforge.event.level.BlockEvent;
 import net.neoforged.neoforge.event.level.PistonEvent;
 import net.minecraft.core.BlockPos;
 
-/** Bridges processing history between placed block states and item stacks. */
+/** 在已放置方块状态与物品堆之间传递加工历史记录。 */
 public final class PlacedProcessEvents {
     private PlacedProcessEvents() {
     }
@@ -23,8 +23,7 @@ public final class PlacedProcessEvents {
         if (event.isCanceled()) {
             return;
         }
-        // A normal replacement at the same coordinate invalidates any old
-        // snapshot; never let a coordinate-only entry leak into a new block.
+        // 同一坐标上的普通方块替换会使旧快照失效；不能让仅按坐标索引的记录泄漏到新方块。
         data.remove(event.getPos());
         ItemStack placed = findPlacedStack(event);
         if (!placed.isEmpty() && ProcessData.hasAttempts(placed)) {

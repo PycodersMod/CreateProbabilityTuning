@@ -46,10 +46,9 @@ public abstract class BasinRecipeMixin {
         if (invocation == null || hook == null) {
             return basin.acceptOutputs(items, fluids, simulate);
         }
-        // Use the same chosen output during both Create's simulated capacity
-        // pass and its real extraction pass.  Leaving the simulated pass on
-        // Create's original output could make capacity checks disagree with
-        // the actual probability result and consume inputs on a false pass.
+        // 在 Create 的模拟容量检查阶段和实际提取阶段使用相同的已选输出。
+        // 若模拟阶段仍使用 Create 的原始输出，容量检查可能与真实概率结果不一致，
+        // 并在错误的检查结果下消耗输入。
         List<ItemStack> resolved = invocation.prepared() == null
                 ? items
                 : CreateOutputBridge.resolve(items, invocation.prepared().status(), invocation.prepared().outputs());

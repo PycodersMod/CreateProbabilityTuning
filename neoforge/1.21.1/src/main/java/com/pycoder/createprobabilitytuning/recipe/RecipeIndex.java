@@ -18,7 +18,7 @@ public record RecipeIndex(Map<ResourceLocation, RecipeContext> byId) {
         return Optional.ofNullable(byId.get(recipeId));
     }
 
-    /** Finds the exact recipe instance supplied by RecipeManager/Create. */
+    /** 查找由 RecipeManager/Create 提供的确切配方实例。 */
     public Optional<RecipeContext> findByRecipe(Recipe<?> recipe) {
         if (recipe instanceof RecipeOriginAccess access && access.cpt$getOrigin() != null) {
             return find(access.cpt$getOrigin());

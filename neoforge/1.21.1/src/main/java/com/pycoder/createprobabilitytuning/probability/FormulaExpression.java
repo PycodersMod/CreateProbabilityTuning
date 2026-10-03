@@ -2,7 +2,7 @@ package com.pycoder.createprobabilitytuning.probability;
 
 import java.util.Locale;
 
-/** Dependency-free evaluator for continuous probability formulas. */
+/** 无外部依赖的连续概率公式求值器。 */
 final class FormulaExpression {
     private final String source;
     private int index;

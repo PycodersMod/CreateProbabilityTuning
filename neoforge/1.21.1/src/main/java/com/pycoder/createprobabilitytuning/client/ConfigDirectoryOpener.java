@@ -7,7 +7,7 @@ import java.awt.Desktop;
 import java.io.IOException;
 import java.nio.file.Path;
 
-/** Opens the platform's file manager without depending on a shell script. */
+/** 打开操作系统的文件管理器，无需依赖 shell 脚本。 */
 public final class ConfigDirectoryOpener {
     private static final Logger LOGGER = LogUtils.getLogger();
 

@@ -22,7 +22,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.function.Predicate;
 
-/** Version-sensitive Create adapter. Actual callback wiring is intentionally isolated here. */
+/** 与版本相关的 Create 适配器；具体回调接线有意集中在此处。 */
 public final class CreateHook {
     private static volatile CreateHook active;
     private final RecipeOverride override = new RecipeOverride();
@@ -46,7 +46,7 @@ public final class CreateHook {
                 .orElseGet(() -> new ProcessingDecision(ProcessingDecision.Status.DISABLED, input, List.of()));
     }
 
-    /** Handles Create's direct processing path, where only the recipe object is available. */
+    /** 处理 Create 的直接加工路径；此路径只能取得配方对象。 */
     public ProcessingDecision handleFinalProcessing(Recipe<?> recipe, ItemStack input,
                                                      List<ProcessingOutput> outputs, RandomSource random) {
         ProcessingDecision decision = contextForFinalProcessing(recipe, input)
@@ -71,7 +71,7 @@ public final class CreateHook {
         return decision;
     }
 
-    /** Handles the result roll that Create performs internally after the final sequenced step. */
+    /** 处理 Create 在最后一个序列步骤后于内部执行的结果抽取。 */
     public Optional<ItemStack> handleSequencedFinalOutput(ResourceLocation recipeId,
                                                           SequencedAssemblyRecipe recipe,
                                                           ItemStack input,
@@ -96,8 +96,7 @@ public final class CreateHook {
     }
 
     /**
-     * Handles a final sequence step when Create reaches it through
-     * RecipeApplier instead of invoking SequencedAssemblyRecipe.advance first.
+     * 当 Create 通过 RecipeApplier 到达序列最后一步、而未先调用 SequencedAssemblyRecipe.advance 时进行处理。
      */
     public Optional<ItemStack> handleSequencedFinalOutput(ResourceLocation recipeId,
                                                            ItemStack input,
@@ -194,8 +193,8 @@ public final class CreateHook {
     }
 
     /**
-     * Captures and evaluates the input before Create's real pass extracts it.
-     * The simulated pass must never mutate the input or failure history.
+     * 在 Create 的实际流程提取输入前捕获并计算输入状态。
+     * 模拟流程绝不能修改输入或失败历史记录。
      */
     public ProcessingDecision prepareBasinDecision(BasinBlockEntity basin, Recipe<?> recipe) {
         if (!(recipe instanceof ProcessingRecipe<?, ?> processingRecipe)) {

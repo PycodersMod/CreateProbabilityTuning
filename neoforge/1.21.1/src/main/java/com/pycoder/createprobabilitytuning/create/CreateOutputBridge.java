@@ -3,7 +3,7 @@ package com.pycoder.createprobabilitytuning.create;
 import java.util.List;
 import com.pycoder.createprobabilitytuning.recipe.ProcessingDecision;
 
-/** Keeps Create's already rolled outputs when a recipe is not handled by this mod. */
+/** 配方未由本 Mod 处理时，保留 Create 已经抽取出的输出结果。 */
 public final class CreateOutputBridge {
     private CreateOutputBridge() {
     }

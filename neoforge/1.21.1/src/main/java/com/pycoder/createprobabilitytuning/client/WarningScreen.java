@@ -34,8 +34,8 @@ public final class WarningScreen extends Screen {
 
     @Override
     public void render(GuiGraphics graphics, int mouseX, int mouseY, float partialTick) {
-        // Screen.render draws the background before widgets. Calling it last
-        // would redraw the blur/menu layer over the diagnostic text.
+        // Screen.render 会先于控件绘制背景。若最后调用它，
+        // 模糊/菜单层会重新绘制到诊断文本上方。
         super.render(graphics, mouseX, mouseY, partialTick);
         graphics.drawCenteredString(font, Component.literal("Configuration warning / 配置警告"), width / 2, 35, 0xFFFFFF);
         graphics.drawCenteredString(font, Component.literal(diagnostic.recipeId()), width / 2, 65, 0xFFCC55);

@@ -30,8 +30,8 @@ public final class ProbabilityJeiPlugin implements IModPlugin {
             return;
         }
 
-        // The server recipe index is not available on the client used by JEI.
-        // Build the same index from the synchronized client recipe manager first.
+        // JEI 使用的客户端无法访问服务端配方索引。
+        // 先从已同步的客户端配方管理器构建相同的索引。
         hook.replaceJeiIndex(new RecipeScanner().scan(
                 Minecraft.getInstance().level.getRecipeManager(),
                 ClientRuleSync.config()));

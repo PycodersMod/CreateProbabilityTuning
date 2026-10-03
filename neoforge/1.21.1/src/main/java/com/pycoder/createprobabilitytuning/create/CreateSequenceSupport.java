@@ -15,7 +15,7 @@ import net.minecraft.resources.ResourceLocation;
 import java.util.ArrayList;
 import java.util.List;
 
-/** Shared rules for Create's transitional sequenced-assembly items. */
+/** Create 序列装配过渡物品的共享规则。 */
 final class CreateSequenceSupport {
     private CreateSequenceSupport() {
     }

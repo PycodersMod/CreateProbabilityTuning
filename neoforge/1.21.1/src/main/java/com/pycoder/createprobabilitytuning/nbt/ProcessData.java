@@ -8,7 +8,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.CustomData;
 import org.slf4j.Logger;
 
-/** Reads and writes only this mod's failure history in an ItemStack. */
+/** 仅在 ItemStack 中读写本 Mod 的失败历史记录。 */
 public final class ProcessData {
     public static final String NAMESPACE = "CreateProbabilityTuning";
     public static final String ATTEMPTS = "Attempts";
@@ -125,13 +125,13 @@ public final class ProcessData {
         return root;
     }
 
-    /** Copies only this mod's failure history into a replacement ItemStack/tag. */
+    /** 仅将本 Mod 的失败历史记录复制到替换后的 ItemStack/tag 中。 */
     public static ItemStack copyModData(ItemStack source, ItemStack target) {
         CustomData.update(DataComponents.CUSTOM_DATA, target, root -> copyModData(customData(source), root));
         return target;
     }
 
-    /** Copies only this mod's namespace, preserving unrelated custom data on the target. */
+    /** 仅复制本 Mod 的命名空间，同时保留目标对象上无关的自定义数据。 */
     public static CompoundTag copyModData(CompoundTag source, CompoundTag target) {
         if (source.contains(NAMESPACE, 10)) {
             target.put(NAMESPACE, source.getCompound(NAMESPACE).copy());

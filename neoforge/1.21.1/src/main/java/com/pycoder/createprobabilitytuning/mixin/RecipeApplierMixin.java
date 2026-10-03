@@ -17,7 +17,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 import java.util.List;
 
-/** Covers Create's direct depot/mechanical-processing path. */
+/** 覆盖 Create 的直接置物台/机械加工路径。 */
 @Mixin(targets = "com.simibubi.create.foundation.recipe.RecipeApplier")
 public abstract class RecipeApplierMixin {
     @Redirect(

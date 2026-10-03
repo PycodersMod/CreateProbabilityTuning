@@ -58,8 +58,8 @@ public final class ClientWarningHandler {
             }
             return;
         }
-        // The first client ticks can happen before recipe/resource reload has
-        // completed. Delay the screen until the initial reload settles.
+        // 客户端最初几个 tick 可能发生在配方/资源重载完成之前。
+        // 等初次重载完成后再显示界面。
         loaded = true;
         var configPath = FMLPaths.CONFIGDIR.get().resolve("create_probability_tuning.json");
         enqueue(new ConfigManager().load(configPath).diagnostics());

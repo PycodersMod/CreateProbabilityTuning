@@ -7,7 +7,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
-/** Applies configured probability to Create's existing sequenced-assembly JEI page. */
+/** 将已配置的概率应用到 Create 现有的序列装配 JEI 页面。 */
 @Mixin(SequencedAssemblyCategory.class)
 public abstract class SequencedAssemblyCategoryMixin {
     @Redirect(

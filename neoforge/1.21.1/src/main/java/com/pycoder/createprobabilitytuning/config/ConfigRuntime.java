@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-/** Owns the active configuration and provides an atomic reload boundary. */
+/** 管理当前生效的配置，并提供原子化重载边界。 */
 public final class ConfigRuntime {
     private final Path path;
     private final ConfigManager manager;

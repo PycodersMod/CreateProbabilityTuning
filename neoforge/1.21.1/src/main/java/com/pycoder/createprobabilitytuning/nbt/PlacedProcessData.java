@@ -16,7 +16,7 @@ import org.slf4j.Logger;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Per-dimension persistent item snapshots for processing-aware placed blocks. */
+/** 按维度持久化物品快照，供支持加工历史的已放置方块使用。 */
 public final class PlacedProcessData extends SavedData {
     private static final Logger LOGGER = LogUtils.getLogger();
     private static final String DATA_ID = "create_probability_tuning_placed_process";
