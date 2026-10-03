@@ -62,12 +62,16 @@ val safeDevUsername = devUsername.replace(Regex("[^A-Za-z0-9._-]"), "_")
 val pycodersUsername = providers.gradleProperty("pycodersUsername").orElse(devUsername).get()
 val pycodersGameArgs = decodeArgs("pycodersGameArgsB64")
 val pycodersJavaArgs = decodeArgs("pycodersJavaArgsB64")
-val cptLegacyRunRoot = layout.projectDirectory.dir("../../runtime/legacy-import/CreateProbabilityTuning/run")
-val cptRunDir = file(
-    providers.gradleProperty("pycodersRuntimeDir")
-        .orElse("../../runtime/legacy-import/CreateProbabilityTuning/run")
-        .get()
-)
+val pycodersRuntimeProjectId = providers.gradleProperty("pycodersRuntimeProjectId").orElse(rootProject.name).get()
+val pycodersConfiguredRunDir = providers.gradleProperty("pycodersRuntimeDir").orNull?.let { file(it).canonicalFile }
+val pycodersConfiguredRuntimeRoot = providers.gradleProperty("pycodersRuntimeRoot").orNull
+    ?: providers.environmentVariable("MMTL_WORKSPACE_RUNTIME_ROOT").orNull
+val pycodersConfiguredRootRunDir = pycodersConfiguredRuntimeRoot?.let { File(it, "legacy-import/$pycodersRuntimeProjectId/run").canonicalFile }
+val pycodersDiscoveredRunDir = generateSequence(project.projectDir.canonicalFile) { it.parentFile }
+    .map { File(it, "runtime/legacy-import/$pycodersRuntimeProjectId/run").canonicalFile }
+    .firstOrNull { it.isDirectory }
+val cptRunDir = pycodersConfiguredRunDir ?: pycodersConfiguredRootRunDir ?: pycodersDiscoveredRunDir ?: file("run").canonicalFile
+val cptLegacyRunRoot = layout.dir(providers.provider { cptRunDir }).get()
 val jeiJar = cptLegacyRunRoot.file("client-Tester2/mods/jei-1.21.1-neoforge-19.44.0.403.jar")
 
 runs {
