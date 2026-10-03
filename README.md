@@ -1,29 +1,36 @@
 # CreateProbabilityTuning
 
-## Supported Targets
+## 支持目标
 
 <table>
 <thead>
 <tr><th>Loader</th><th>Minecraft</th></tr>
 </thead>
 <tbody>
-<tr><td><a href="https://neoforged.net/">NeoForge</a></td><td><a href="https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-1">1.21.1</a></td></tr>
+<tr><td><a href="neoforge/">NeoForge</a></td><td><a href="neoforge/1.21.1/">1.21.1</a></td></tr>
 </tbody>
 </table>
 
-面向 Create（机械动力）的概率调校内容，维护模组代码、资源和构建配置。
+为 Create（机械动力）相关内容提供概率调校功能。
 
-## Project layout
+## 工程结构
 
-The buildable project is in [$(@{Loader=neoforge; Version=1.21.1; Path=neoforge/1.21.1}.Path)/](neoforge/1.21.1/). Repository metadata remains at the root.
+可构建项目位于 [neoforge/1.21.1/](neoforge/1.21.1/)。仓库共享元数据保留在根目录。
 
-## Build
+## 构建
 
-Run the Gradle wrapper from $(@{Loader=neoforge; Version=1.21.1; Path=neoforge/1.21.1}.Path)/:
+请进入目标目录并运行 Gradle Wrapper。
 
-``text
+Windows PowerShell：
+
+```powershell
+cd neoforge/1.21.1
+.\gradlew.bat clean build
+```
+
+Linux/macOS：
+
+```sh
 cd neoforge/1.21.1
 ./gradlew clean build
-``
-
-The target uses NeoForge for Minecraft 1.21.1. See the project directory for its Java and dependency requirements.
+```
